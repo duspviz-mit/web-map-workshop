@@ -455,4 +455,8 @@ CSS is the way you style your page, learn more by referring to the references, o
 
 ## What to do next?
 
-I think that one of the best ways to understand website design is to play with popular websites.
+Add more images, more text, and different elements to your `index.html`! Consider exploring HTML and CSS resources on offer from Lynda.com, Codecademy, and w3schools. See if you can understand and expand the [basic website template](http://duspviz.mit.edu/resources/gis-portfolio.zip) we provide students in the first week of 11.205 - try adding content and changing styles! Play with hosting your website on your Athena locker. If you're feeling bold, dip your toes into Javascript.
+
+Come back next week for a primer on using Bootstrap and templates to make developing stylish---oh-so-stylish---and function---oh-so-functional---websites painless.
+
+![Kevin Spacey is only getting started.](https://media.giphy.com/media/26tPdesgkQlXiiERq/giphy.gif)
