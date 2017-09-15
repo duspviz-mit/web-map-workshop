@@ -187,7 +187,7 @@ ___
 
 Now that we understand how HTML documents work and how they are structured, let's modify your web page and insert some content!
 
-#### i. Add Text
+### 1. Add Text
 
 We can start by modifying the heading that welcomes visitors to our site and add a couple paragraph elements.
 
@@ -203,7 +203,7 @@ Modify the HTML code on the page to include the following. Add some paragraph (`
 
 The `<h1>` tag is one of a series of heading tags ranging from `<h1>` to `<h6>`; use these as you would use heading and subheadings to structure any document. The `<p>` tag signifies a paragraph that can contain large blocks of text. [Read more about HTML page elements](https://www.lehigh.edu/~inwww/seminar/reference/htmlchart.html).
 
-#### ii. Add a Link
+### 2. Add a Link
 
 Adding a link to your site is simple. To add a link, we use the `<a>` tag. The a tag defines a hyperlink that can be used to link from one page to another. HTML tags can have attributes. Attributes define and provide additional information about an element. To create a hyperlink, we use the href attribute of the a tag. The following line contains a link to the DUSP home page, and illustrates how you would set up a link. You can place links separate from your paragraphs, or place them within. Write the following line of code at the end your second paragraph, just before the p end tag.
 
@@ -215,7 +215,7 @@ You have many options for links. [Read about them here](http://www.w3schools.com
 
 *Can you add a link that takes you to Google Maps?*
 
-#### iii. Add an Image
+### 3. Add an Image
 
 Adding an image is just as easy as adding a hyperlink, although a bit different. An image is not stored on your webpage, but it sits on your server, just like your other files. When you display an image in an html file, you are linking to the image. The HTML tells the browser to locate and display it. Therefore, we will follow a multiple step process.
 
