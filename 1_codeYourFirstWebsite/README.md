@@ -6,7 +6,7 @@ ___
 
 Let's get started!
 
-Start this week by downloading and unzipping the [workshop materials](https://duspviz.mit.edu/resources/web-design-01.zip) to your desktop. Then change directory to this folder (website). If you want to do this in the terminal, try:
+Start this week by downloading and unzipping the [workshop materials](http://duspviz.mit.edu/resources/web-design-01.zip) to your desktop. Then change directory to this folder (website). If you want to do this in the terminal, try:
 
 ```sh
 # Change Directory
