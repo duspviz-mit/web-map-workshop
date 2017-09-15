@@ -11,6 +11,8 @@ Start this week by downloading and unzipping the [workshop materials](http://dus
 ```sh
 # Change Directory
 $ cd ~/Desktop
+# Download
+$ unzip web-design-01.zip && cd web-design-01
 # List Files
 $ ls -fl
 ```
