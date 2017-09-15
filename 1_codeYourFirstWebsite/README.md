@@ -451,7 +451,7 @@ Another available property is called is **float**. Float can be used to wrap tex
 
 CSS is the way you style your page, learn more by referring to the references, or playing around in a sandbox such as [CSS Desk](http://www.cssdesk.com/).
 
-===
+---
 
 ## What to do next?
 
