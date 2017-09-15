@@ -2,9 +2,11 @@
 
 *Updated September 15, 2017 by Eric Huntley ([ehuntley@mit.edu](ehuntley@mit.edu))*
 
+___
+
 Let's get started!
 
-Start this week by downloading and unzipping the [workshop materials](duspviz.mit.edu/resources/web-design-01.zip) to your desktop. Then change directory to this folder (website). If you want to do this in the terminal, try:
+Start this week by downloading and unzipping the [workshop materials](https://duspviz.mit.edu/resources/web-design-01.zip) to your desktop. Then change directory to this folder (website). If you want to do this in the terminal, try:
 
 ```sh
 # Change Directory
@@ -41,6 +43,8 @@ $ python -m SimpleHTTPServer 8080
 Now open a browser and access your site at [http://localhost:8080](http://localhost:8080). You've probably noticed that you're seeing a blank browser window, which is just fine: we haven't put anything in our HTML file yet!
 
 Your page now appears as it would if it were live on the internet, except it is only visible to you locally---even the most experienced coders would never edit the live version of their websites! It's too easy for fingers to slip and break things. For more on the Python Web Server, see the following[DUSPviz page on localhosts](http://duspviz.mit.edu/tutorials/localhost-servers/).
+
+___
 
 ## HTML: The Core Concepts
 
@@ -177,9 +181,9 @@ Tags are specified and defined using attributes, classes, and IDs. These attribu
 ```html
 <div style="background-color:#0000FF" class="header" id="main">...</div>
 ```
-===
+___
 
-### Modify your Document
+## Modify your Document
 
 Now that we understand how HTML documents work and how they are structured, let's modify your web page and insert some content!
 
@@ -259,7 +263,7 @@ Our page, with this code, contains a bit more content now.
 
 *What does our DOM Tree look like at this point?*
 
-===
+___
 
 ## CSS: The Core Concepts
 
