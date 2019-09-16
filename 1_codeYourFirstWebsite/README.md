@@ -1,48 +1,47 @@
-## Web Design 1: Code Your First Website (HTML/CSS)
-
-*Updated September 15, 2017 by Eric Huntley ([ehuntley@mit.edu](ehuntley@mit.edu))*
-
+# Web Design 1: A Portfolio Website from Scratch
 ___
 
-Let's get started!
+## Getting Ready
 
-Start this week by downloading and unzipping the [workshop materials](http://duspviz.mit.edu/resources/web-design-01.zip) to your desktop. Then change directory to this folder (website). If you want to do this in the terminal, try:
+Start this week by downloading and unzipping the [workshop materials](http://duspviz.mit.edu/resources/web-design-01.zip) to an appropriate folder. If you want to do this in the terminal, try:
 
 ```sh
-# Change Directory
-$ cd ~/Desktop
-# Download
-$ unzip web-design-01.zip && cd web-design-01
-# List Files
+# Change Directory to Desktop (~ means home)
+$ cd ~/Desktop/
+# Unzip the archive.
+$ unzip web-design-01.zip
+# Change directory to the workshop materials.
+$ cd web-design-01
+# List Files. -f means show file size, -l means long format
 $ ls -fl
 ```
 
 ### Use a Text Editor
 
-Code is best written using a text editor capable of highlighting language syntax such as [Atom](https://atom.io), [Sublime Text](https://www.sublimetext.com/), or (for the very brave and/or foolhardy) [Emacs](https://www.gnu.org/software/emacs/). To complete the workshop, you will want to do all of your coding one of these editors---at DUSP, we're moving toward supporting the Free and Open Source text editor Atom as our primary text editor. If you're using a personal computer and you don't have it installed, feel free to [download](https://atom.io/) it and install it at this time.
+Code is best written using a text editor capable of highlighting language syntax such as [Atom](https://atom.io), [Visual Studio Code](https://code.visualstudio.com/), or (for the very brave and/or foolhardy) [Emacs](https://www.gnu.org/software/emacs/). To complete the workshop, you will want to do all of your coding one of these editors---at DUSP, we're moving toward supporting the Atom and Visual Studio Code as our primary text editors. If you're using a personal computer and you don't have it installed, feel free to download and install one of these.
 
-### Organize your Directory
+### Organize your Workspace
 
-Open Atom and use File > Add Project Folder... (or Shift-Apple-O) to add it your web directory. The web directory should be organized in the following manner.
+Open your text editor and add your new project folder to your web directory (in Atom File > Add Project Folder; in Visual Studio Code > Add Folder to Workspace). The web directory should be organized in the following manner, though we have yet to create an `index.html` file:
 
-<img src="http://duspviz.mit.edu/wp-content/uploads/2015/01/file-structure.png" alt="Drawing"/>
+![File structure.](images/file-structure.png)
 
-When a browser requests your page, your server will return the `index.html` file in the root directory. Create a new blank text document in your text editor and save it as `index.html` in your web folder. The `index.html` is your 'root'... or 'home'... page.
+When a browser requests your page, the server will return the `index.html` file in the accessed directory. Create a new blank text document in your text editor and save it as `index.html` in your web folder.
 
 ### Start up a Web Server
 
-To work with our website, we need our computer to act like a webserver, allowing it to access files online. There are many tools for doing this; a very simple one is built right into Python, which is accessible from your Terminal.
+To work with our website, we need our computer to act like a web server, allowing it to access files online. There are many tools for doing this; a very simple one is accessible from your terminal.
 
-A note on Terminals: they're kind of scary! It's okay to be a little freaked out by the terminal window if you're not accustomed to using one. But they're one of the most powerful ways of interacting with your file system, so we'll be using them periodically in DUSPViz sessions. Impress your nerd-friends! Learn the terminal!
+A note on the terminal: it's kind of scary! It's okay to be a little freaked out by the terminal if you're not accustomed to using it. But it's one of the most powerful ways of interacting with your file system, so we'll be using it periodically in DUSPViz sessions. Impress your nerd-friends! Learn the terminal!
 
-If you haven't, use the Terminal to **change directory** to the folder in which your website files reside. Once there, start a simple Python server. The commands look like this (assuming that you've downloaded the workshop content to your desktop):
+If you haven't, use the Terminal to change directory to the folder in which your website files reside. Once there, start a simple Python server. The commands look like this (assuming that you've downloaded the workshop content to your desktop):
 
 ```sh
 $ cd ~/Desktop/web-design-01/
-$ python -m SimpleHTTPServer 8080
+$ python3 -m http.server 8080
 ```
 
-Now open a browser and access your site at [http://localhost:8080](http://localhost:8080). You've probably noticed that you're seeing a blank browser window, which is just fine: we haven't put anything in our HTML file yet!
+Now open a browser and access your site at [http://localhost:8080](http://localhost:8080). ...Very good. A blank browser window. Not too impressive, but this is just fine: we haven't put anything in our HTML file yet!
 
 Your page now appears as it would if it were live on the internet, except it is only visible to you locally---even the most experienced coders would never edit the live version of their websites! It's too easy for fingers to slip and break things. For more on the Python Web Server, see the following[DUSPviz page on localhosts](http://duspviz.mit.edu/tutorials/localhost-servers/).
 
@@ -50,9 +49,9 @@ ___
 
 ## HTML: The Core Concepts
 
-<img src="images/environment.png" alt="Drawing" style="text-align: center; width: 75%;"/>
+![Behavior, content, and style.](images/environment.png)
 
-New coders tend to be slippery with their language and call HTML a 'programming language.' It is not! It is a **markup language,** and one of many (others include Markdown and LaTeX). Basically, Markdown languages allow you to structure information in documents. One way to remember this are the acronyms WYSIWYG and WYSIWYM (pronounced 'wizzy-wig' and 'wizzy-wim'). The word processors you're familiar with are WYSIWYG: what you see is what you get. They do not separate form from content, so you're editing your styling even as you're editing your content. Markup languages are WYSIWYM: What You See is What You Mean. They allow you to modify the structure of your document with a great deal of specificity and to separate form from content (which can be very liberating!).
+New coders tend to be slippery with their language and call HTML a 'programming language.' It is not! It is a **markup language,**---one of many (others include [Markdown](https://daringfireball.net/projects/markdown/) and [LaTeX](https://www.latex-project.org/)). Basically, markup languages allow you to structure information in documents. One way to remember this are the acronyms WYSIWYG and WYSIWYM (pronounced 'wizzy-wig' and 'wizzy-wim'). The word processors you're familiar with are WYSIWYG: what you see is what you get. They do not separate form from content, so you're editing your styling even as you're editing your content. Markup languages are WYSIWYM: What You See is What You Mean. They allow you to modify the structure of your document with a great deal of specificity and to separate behavior and style from content (which can be very liberating!).
 
 HTML, standing for [HyperText Markup Language](https://en.wikipedia.org/wiki/HTML), organizes the **content**
 of your page by placing it within **elements**.
@@ -63,7 +62,7 @@ All HTML documents start with the following line of code:
 <!DOCTYPE html>
 ```
 
-Elements of the page are organized by tags. HTML tags are keywords surrounded by angled brackets. This tag states for the browser that the rest of your file will be written in HTML. The rest of our document will follow a very simple rule, no matter how complex the code. When you write a tag (aka start tag), you will need a second tag that declares the end of that part of the document (aka end tag). **Content goes between the start and end tags**.
+Elements of the page are organized by tags. HTML tags are keywords surrounded by angled brackets. This tag states for the browser that the rest of your file will be written in HTML. The rest of our document will follow a very simple rule, no matter how complex the code. When you write a tag (aka start tag), you will need a second tag that declares the end of that part of the document (aka end tag). Content goes between the start and end tags.
 
 
 ```html
@@ -82,20 +81,28 @@ Comments look like the following. They are used to write human-readable notes in
 <!-- ... -->
 ```
 
-A basic page, all together, will look like this. Copy and paste this into your `index.html` document and refresh `localhost`.
+A basic page, all together, will look like this. Copy and paste this into your `index.html` document and refresh `localhost`. You should see a header, a paragraph, and an unordered list!
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    	<meta charset="utf-8">
-    	<title>Hello World</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="">
+		<!-- Makes your site display properly on iPhones. -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>A very exciting page.</title>
 	</head>
 	<body>
 		<!-- This is a comment -->
 		<h1>Hello World</h1>
 		<div id="main">
-			...
+            <p>This is text</p>
+            <ul>
+                <li>List item 1.</li>
+                <li><a href="https://dusp.mit.edu"> List item 2.</a></li>
+            </ul>
 		</div>
 	</body>
 </html>
@@ -103,56 +110,63 @@ A basic page, all together, will look like this. Copy and paste this into your `
 
 ### The DOM: Document Object Model
 
-HTML documents are just documents. [The first rule of tautology club is the first rule of tautology club.](https://xkcd.com/703/) Really: you've been structuring documents for years now. Every time you decide what content in your paper should be a subheader, where your paragraph breaks should go, which citation style to use, you're building an ad hoc model for your document. On the web, the [Document Object Model](https://www.w3.org/DOM/) describes the hierarchy of elements in web pages. This is modeled using something commonly called the **DOM Tree**, and it consists of our HTML elements.
+Web pages are just long, organized documents. This should be conforting! You've been structuring documents for years now. Every time you decide what content in your paper should be a subheader, where your paragraph breaks should go, which citation style to use, you're building an ad hoc object model for your document. On the web, the [Document Object Model](https://www.w3.org/DOM/) describes the hierarchy of elements in web pages. This is modeled using something commonly called the **DOM Tree**, and it consists of our HTML elements.
 
 <img src="images/dom.png" alt="DOM" style="width: 50%;"/>
 
-### HTML Elements
+### Structural Elements
 
-#### Structure Elements
+These elements are large containers for two different types of information: the document's `head` element, or its metadata (`<head></head>`), and the document's `body`, or content (`<body></body>`). Each of these appear once in every html page. The `head` goes above the `body` (which makes sense, yeah?).
 
-These elements are large containers for two different types of information; each appears once in every HTML file.
+#### `<head> Content`
+
+The head of our document looks a like this:
 
 ```html
-<!-- HEAD element containing metadata, style, and links -->
+...
 <head>
-	...
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<!-- Makes your site display properly on iPhones. -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>A very exciting page.</title>
 </head>
-<!-- BODY element containing all document content elements -->
+...
+```
+
+You probably are getting a little freaked out by the block of code sitting between the head tags at the top of your page right now. I know. I am, too. Basically the `head` of your average web documents has continued to get more complicated as the types of devices on which web pages are viewed have diversified.
+
+The important one to note for the time being is the `<title></title>`. If you look at the page (which is being served on your localhost), you should see the content of the title element appearing in the browser tab. This title is not rendered in the page itself; instead it gives the whole document a title, which is indexed by e.g., Google (it'll show up in search results, too). Now let's get to the objects that actually show up in our page: the contents of the `<body>` tag.
+
+### `<body> Content`
+
+The body of our page looks like the below, where I've inserted comments to indicate the function of each line:
+
+```html
 <body>
-	...
+	<!-- h1 is the largest heading. (They range h1-h6.) -->
+	<h1>Hello World</h1>
+	<!-- a div is a modular container for your page. -->
+	<!-- an id uniquely identifies this element for styling or interaction -->
+	<div id="main">
+		<!-- p is paragraph, and is a slightly offset block of text -->
+		<p>This is text</p>
+		<!-- ul is an unordered list (there are also ol, ordered lists) -->
+		<!-- a class identifies a type of element, allowing the same styling to be applied across many elements-->
+		<ul class="list_type">
+			<!-- li is list item -->
+			<li>List item 1.</li>
+			<!-- another list item, this one a link (a), which is hyperlinked to (href) the DUSP page -->
+			<li><a href="https://dusp.mit.edu"> List item 2.</a></li>
+		</ul>
+	</div>
 </body>
 ```
 
-#### Body Elements
+#### `<div> Elements`
 
-```html
-<!-- LINKS. <a> is used to define a hyperlink -->
-<a href="http://somesite.www">...</a>
-<!-- IMAGE tag to define a link to an image in your document. It is a void element. -->
-<img />
-<!-- PARAGRAPH tag for large blocks of body text -->
-<p>...</p>
-<!-- SPAN is for groups of inline elements -->
-<span>...</span>
-```
-
-##### *Lists*
-
-```html
-<!-- UL defines an unordered list -->
-<ul>
-	<li>...</li> <!-- line in list -->
-</ul>
-<!-- OL defines an ordered list -->
-<ol>
-	<li>...</li> <!-- line in list -->
-</ol>
-```
-
-##### *`<div>`*
-
-Perhaps the most common body element, **div** tags contain a section of an HTML page. One page can contain many **div** elements, and one **div** element can contain many nested elements. The div tag is an element of HTML that allows you to group content into containers (or divisions) you can organize and style on your web page, and divs play nicely with CSS (Cascading Style Sheets). CSS is a style sheet language used for describing the look and formatting of an HTML page, we will introduce it in the next step.
+Perhaps the most common body element, `div` elements merit a little bit of further discussion. They're both very useful and a little confusing. They're primarily used to construct scaffolding for your content. One page can contain many `div` elements, and one `div` element can contain many nested elements.  These allow you to group content into containers (or divisions) you can organize and style on your web page. They also play nicely with CSS (Cascading Style Sheets). CSS is a style sheet language used for describing the look and formatting of an HTML page; we will introduce it soon...
 
 ```html
 <div id="main">
@@ -163,72 +177,53 @@ Perhaps the most common body element, **div** tags contain a section of an HTML 
 
 ### Tag Attributes, Classes, and IDs
 
-Tags are specified and defined using attributes, classes, and IDs. These attributes, classes, and IDs allow you to identify specific elements, modify individual elements and groups of elements, and set the characteristics of the elements.
+HTML elements are not only their content; they also involve the specification of a number of attributes. These allow you to identify specific elements, modify individual elements and groups of elements, and set the characteristics of the elements.
 
-- *Attributes* define properties of the elements. Elements can have multiple attributes. For example, if the element is a link, where does the link take you.
-
+- *Attributes* define properties of the elements. Elements can have multiple attributes. For example, if the element is a link, where does the link take you (the href attribute)? 
 - *Classes* identify a group of elements that operate similarly or work in the same fashion. For example, a button.
-
 - *IDs* identify unique features and allow for and operations to be performed on that unique feature. In each document, each ID should be unique.
 
-*For Example:*
+Let's take a simple example: a navigation section of a webpage with two buttons that take the user to Github and Places Journal, respectively.
 
 ```html
-<a href="http://www.github.com" class="button" id="unique">...</tag>
+<!-- A div with a blue background with the class naviation, with the unique id main. -->
+<div style="background-color:#0000FF" class="navigation" id="main">
+	<!-- A link of class button with the unique id git_pointer that will take the user to Github. -->
+	<a href="https://www.github.com" class="button" id="git_pointer">Take me to Github.</a>
+	<!-- A link of class button with the id places_pointer that will take the user to Places Journal. -->
+	<a href="https://placesjournal.org/" class="button" id="places_pointer">Take me to Places Journal.</a>
+</div>
 ```
 
-*or*
-
-
-```html
-<div style="background-color:#0000FF" class="header" id="main">...</div>
-```
+Remember: ids are unique. Classes identify groups. Attributes tell us about the behavior or style of a given element.
 ___
 
 ## Modify your Document
 
-Now that we understand how HTML documents work and how they are structured, let's modify your web page and insert some content!
+Now that we are beginning to understand how HTML documents work and the ingredients that make them up, let's modify our web page and insert some content!
 
-### 1. Add Text
+### Add Text
 
-We can start by modifying the heading that welcomes visitors to our site and add a couple paragraph elements.
+Modify the HTML code on the page to include the following. Add some paragraph (`<p></p>`) elements and at least one heading (`<h1></h1>`, `<h2></h2>`, etc.) within the `<div></div>` elements on your page. Of course, you don't need to write any content... do what all designers do and use some [lorem ipsum](https://lipsum.com/) until you know a bit more about the content that meets the needs of this particular site. The `<h1>` tag is one of a series of heading tags ranging from `<h1>` to `<h6>`; use these as you would use heading and subheadings to structure any document. The `<p>` tag signifies a paragraph that can contain large blocks of text. [Read more about HTML page elements](https://www.w3schools.com/tags/).
 
-Modify the HTML code on the page to include the following. Add some paragraph (`<p>`) elements and at least one heading (`<h1>`) within the `<div>` elements on your page.
+### Add another Link
 
-```xml
-<div id="main">
-	<h1 id="headtext">Body Heading</h1>
-	<p id="foo">This is my first paragraph.</p>
-	<p id="bar">This is my second paragraph.</p>
-</div>
-```
+Adding a link to your site is simple. To add a link, we use the `<a>` tag. The a tag defines a hyperlink that can be used to link from one page to another. HTML tags can have attributes. Attributes define and provide additional information about an element. To create a hyperlink, we use the href attribute of the a tag. 
 
-The `<h1>` tag is one of a series of heading tags ranging from `<h1>` to `<h6>`; use these as you would use heading and subheadings to structure any document. The `<p>` tag signifies a paragraph that can contain large blocks of text. [Read more about HTML page elements](https://www.lehigh.edu/~inwww/seminar/reference/htmlchart.html).
-
-### 2. Add a Link
-
-Adding a link to your site is simple. To add a link, we use the `<a>` tag. The a tag defines a hyperlink that can be used to link from one page to another. HTML tags can have attributes. Attributes define and provide additional information about an element. To create a hyperlink, we use the href attribute of the a tag. The following line contains a link to the DUSP home page, and illustrates how you would set up a link. You can place links separate from your paragraphs, or place them within. Write the following line of code at the end your second paragraph, just before the p end tag.
-
-```html
-<a href="http://dusp.mit.edu">Take me to DUSP.</a>
-```
-
-You have many options for links. [Read about them here](http://www.w3schools.com/tags/tag_a.asp). For example, if you want a link to open in a new page, you can use `target="_blank"` as a property of the `<a>` tag - this is very common!
+You have many options for links. [Read about them here](http://www.w3schools.com/tags/tag_a.asp). For example, if you want a link to open in a new page, you can use `target="_blank"` as a property of the `<a>` tag - this is very common, though becoming less so as more and more users access web pages through their browsers.
 
 *Can you add a link that takes you to Google Maps?*
 
-### 3. Add an Image
+### Add an Image
 
 Adding an image is just as easy as adding a hyperlink, although a bit different. An image is not stored on your webpage, but it sits on your server, just like your other files. When you display an image in an html file, you are linking to the image. The HTML tells the browser to locate and display it. Therefore, we will follow a multiple step process.
 
-* Locate the folder named `images` in your project directory. You will find one image here named `cat.jpg`. Here you store all subsequent images you want to use in your page.
-* Use the `<img />` tag to link to that image in `index.html`.
-
-<img src="http://duspviz.mit.edu/wp-content/uploads/2015/01/file-structure-images1.png" alt="file-structure-images" width="134" height="130" class="aligncenter size-full wp-image-1503" />
+- Locate the folder named `images` in your project directory. You will find one image here named `cat.jpg`. Here you store all subsequent images you want to use in your page.
+- Use the `<img />` tag to link to that image in `index.html`.
 
 Now we can add the image to our index.html. The following line of code uses the `<img>` tag, and then links to our image. We will use the `src` attribute to name the source of the image. The image is coming from our own server, we don't need to go anywhere to find it, so we can put the name of the folder and image as our image address (i.e., `"images/cat.jpg"`)
 
-*Can you add another image, perhaps a photo of the Boston skyline?*
+Can you add another image, perhaps a photo of the Boston skyline?
 
 If you want to add an image from another page, you can simply include the URL at which the image is located. The following links to an image on Wikimedia.
 
@@ -267,25 +262,25 @@ Our page, with this code, contains a bit more content now.
 
 ___
 
-## CSS: The Core Concepts
+## CSS: Cascading Style Sheets
 
-### Cascading Style Sheets
-
-Cascading Style Sheets (CSS) is a styling language used for describing the look and formatting of an HTML page. It uses the DOM and styles 'cascade' from higher elements in the DOM tree to elements further down.
+Cascading Style Sheets (CSS) is a so-called stylesheet language used to formally define the look and formatting of an HTML page. It uses the DOM and styles 'cascade' from higher elements in the DOM tree to elements further down.
 
 We are going to be using CSS3, which is the third iteration of the CSS styling language. CSS is a very useful styling system, and allows you to style items on your page according to a number of methods based on the element it falls within (ie div, body, p, etc), the id of the element, or the class of the element.
 
-### Why Cascading?
+### 'Cascading...?'
 
-The language 'cascades' in the effect that if you style an element, any nested elements in the DOM will get the same styling unless you specify otherwise. For example, if you set the font for your body element, a p (paragraph) will also be set to the same font, unless you specify specifically in the CSS that you want that p to have another font. This is a useful method in that is minimizes the code you need to write and forces you to be careful with your page organization.
+The language 'cascades' in the sense that if you style an element, any elements falling below that element in the DOM will get the same styling _unless you specify otherwise_. For example, if you set the font for `<body>` element, a `<p>` element will also be set to the same font, unless you specify in the CSS that you want that `<p>` element (or perhaps a class of `<p>` elements) to have another font. This is a useful in that is minimizes the code you need to write and forces you to be careful with your page organization.
 
 ### Link a CSS File to your Site
 
-CSS can be added to style your website in one of a few ways. You can apply CSS to individual elements, embed it within your HTML document, or create a separate CSS file and link it to your HTML doc. In your file, add the following link between the `<head>` tags of your `index.html` file.
+CSS can be added to style your website a few different ways. You can apply CSS to individual elements, embed it within your HTML document, or create a separate CSS file and link it to your HTML document. The latter is the cleanest method, and is the method most commonly used by websites in production. In your file, add the following link between the `<head>` tags of your `index.html` file.
 
 ```html
 <link href="css/main.css" rel="stylesheet" />
 ```
+
+Note that `<link>` elements are different from `<a>` elements, even though both are commonly referred to as 'links'. The `<link>` element imports an external file into your html document, while the `<a>` element places a link to a page or resource within the body of your site.
 
 Save your document, and refresh your page. Everything should center. This is because we applied CSS code to our document by linking to our style file.
 
@@ -309,7 +304,7 @@ Basic CSS syntax looks like the following.
 
 Selectors refer to specific tags, ids, titles, classes, etc. in our HTML. For example, if we want to style everything that falls in the `<body>` tag, we use the `<body>` selector as above.
 
-Selectors can be specified **by element:**
+Selectors can be specified by element...
 
 ```css
 p {
@@ -317,7 +312,7 @@ p {
 }
 ```
 
-**By class:**
+...by class...
 
 ```css
 .main {
@@ -325,7 +320,7 @@ p {
 }
 ```
 
-**By ID:**
+or by ID...
 
 ```css
 #main {
@@ -333,7 +328,7 @@ p {
 }
 ```
 
-Note that all have slightly different syntax; elements are simply the name of the element. Classes are specified with a period (`.`). IDs are specified with a hash (`#`). Recall that classes are groups of elements you'd like to style similarly and the IDs are unique!
+Note that all have slightly different syntax! Elements are invoked using the name of the element. Classes are invoked by use of a period prefix (`.classname`). IDs are specified with an [octothorpe](https://en.wiktionary.org/wiki/octothorpe) or hash mark (`#`). Recall (repeat after me) that classes are groups of elements and the IDs are unique!
 
 ### Inheritance and Order of Operations
 
