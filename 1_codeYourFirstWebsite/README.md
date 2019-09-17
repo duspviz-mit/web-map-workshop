@@ -284,7 +284,7 @@ Note that `<link>` elements are different from `<a>` elements, even though both 
 
 Save your document, and refresh your page. Everything should center. This is because we applied CSS code to our document by linking to our style file.
 
-In the materials for this week, locate the file 'main.css'. This is our stylesheet. We can name it anything really, as long as it has the CSS file type. Open this in your text editor to view the contents. It is a very simple bit of CSS that tells everything in the `<body>` element to center in the page.
+In the materials for this week, locate the file `main.css`. This is our stylesheet. Open this in your text editor to view the contents. It is a very simple bit of CSS that tells a browser to center everything in the `<body>` element on the page.
 
 ```css
 body {
@@ -332,27 +332,51 @@ Note that all have slightly different syntax! Elements are invoked using the nam
 
 ### Inheritance and Order of Operations
 
-CSS follows the DOM model, with styles applied to elements higher in the DOM applied to those that are descendents. If selectors are defined in multiple locations in your CSS, which one gets precedence?
+CSS follows the DOM model, with styles applied to elements higher in the DOM applied to those that are descendants. If selectors are defined in multiple locations in your CSS, which one gets precedence?
 
-<img src="images/dom.png" alt="DOM"/>
+![DOM Reminder](images/dom.png)
 
 There are two general rules of thumb.
 
-* CSS defined last in your document will supersede CSS set on a selector earlier in your document.
-* The more specific selector will override the less specific selector. For example, a style set on the body selector will be overridden by a style set on an element within the body, such as one by ID.
+* CSS defined last in your document will supersede CSS set on a selector earlier in your document. E.g.,...
+
+```css
+p {
+	color: red;
+}
+
+/* will be superceded by... */
+
+p {
+	color: blue;
+}
+
+```
+
+* The more specific selector will override the less specific selector. For example, a style set on the body selector will be overridden by a style set on an element within the body... or a style set on a specific class of a paragraph element will override the generic paragraph style. E.g., ...
+
+```css
+p {
+	font-size: 12;
+}
+
+/* will be supercede by... */
+
+p .footnote {
+	font-size: 9;
+}
+```
 
 
 ### Properties and Values
 
-There are hundreds of properties you can set using CSS. Some of these include font, color, location on page, opacity, size, etc. An extensive list can be found in CSS reference documents. Two prominent references are by W3Schools and Mozilla, check them out for further reading.
+There are hundreds of properties you can set using CSS. Some of these include font, color, location on page, opacity, size, etc. An extensive list can be found in CSS reference documents, for example [those made available by w3schools](https://www.w3schools.com/cssref/default.asp).
 
-+ [https://developer.mozilla.org/en-US/docs/Web/CSS/Reference](Mozilla CSS Reference)
-+ [http://www.w3schools.com/cssref/default.asp](w3Schools CSS Reference)
+However, we'll cover some of the most common here.
 
+#### Font and Type Size
 
-#### *Style Font and Type Size*
-
-To change the font for all of our document, we change it on the highest level we can by signifying we want to style everything within the html tag. This can be accomplished by adding the following selector and properties to the stylesheet.
+To change the font for an entire document, we use the highest-level DOM element we can - the `html` selector. 
 
 ```css
 html {
@@ -362,11 +386,11 @@ html {
 }
 ```
 
-Font family prioritizes a list of font names for the selected element. Line height specifies the minimal height of line boxes within the element.
+`font-family` is a list of priorities. In the case of the above, the browser checks to see if the user has access to the Helvetica font; if not, Arial is substituted; if even Arial is not found (an unlikely scenario) the system's default [sans-serif font](https://en.wikipedia.org/wiki/Sans-serif) is used. Line height specifies the minimal height of lines within the element.
 
-#### *Change Background Color*
+#### Background Color
 
-Adjust the color of an element using background color.
+The color of an entire element can be modified by using the `background-color` property.
 
 ```css
 p {
@@ -374,11 +398,11 @@ p {
 }
 ```
 
-Colors can specified using hex, RGB, or a set of [preset supported color names](http://www.w3schools.com/colors/colors_names.asp).
+Colors can specified using hex (like the above, `#dddddd`), RGBA (`rgba(221, 221, 221, 1)`), or a set of [preset supported color names](http://www.w3schools.com/colors/colors_names.asp).
 
-#### *Pseudo-Classes and Changing Link Color*
+#### Pseudo-Classes
 
-Change link colors using the following.
+Imagine we have a link color like the following:
 
 ```css
 a {
@@ -386,7 +410,7 @@ a {
 }
 ```
 
-In CSS, elements have what are called [Pseudo-Classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes). Pseudo-classes are keywords added to selectors that specifies a special state of the element to be selected. We signify a pseudo-class using a **:**. For example, one pseudo-class is hover, and it signifies what happens you hover over an element. This can be used to change the color a link turns when you hover over it.
+This `a` element itself has what are called [Pseudo-Classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes). Pseudo-classes are keywords added to selectors that specifies a special state of the element to be selected. We signify a pseudo-class using a **:**. For example, one pseudo-class is hover, and it signifies what happens you hover over an element. This can be used to change the color a link turns when you hover over it.
 
 ```css
 a:hover {
@@ -394,31 +418,19 @@ a:hover {
 }
 ```
 
-### Chaining
+## The Box Model: A Love Story
 
-To find selectors that are nested within other selectors, you can use the concept of **chaining**. Chaining is how we identify multiple ids, classes, and selectors.
+HTML and CSS love boxes. Love, *love*, ***love*** boxes. In fact, they loves boxes so much that they puts all of your elements in them. They love having elements in boxes so much that it runs off to tell web browsers about the boxes and how the elements are positioned in the boxes, which means it needs a language to describe them. This is good for us: this box language allows us to be very specific about how elements relate to each other... and their boxes.
 
-```css
-a circle {
-  color: orange;
-}
-```
+![Box model.](images/box_model.png)
 
-[Read more about it here.](https://css-tricks.com/multiple-class-id-selectors/)
+- **Padding**: The content is surrounded by the padding area, which sits between the content and the border.
 
-### The Box Model: A Love Story
+- **Border**: Every box has a border that exists on the outer edge of the padding area.
 
-CSS LOVES boxes. Loves, *loves*, ***loves*** boxes. In fact, it loves boxes so much that it puts all of your elements in them. Then, it loves having elements in boxes so much that it runs off to tell web browsers about the boxes and how the elements are positioned in the boxes, which means it needs a language to describe them. This is good for us: this box language allows us to be very specific about how elements relate to each other... and their boxes.
+- **Margin**: Margin defines the distance between the element and neighboring elements. Margin never has color.
 
-<img src="http://duspviz.mit.edu/wp-content/uploads/2015/01/padding-width.png" alt="DOM"/>
-
-* **Padding** - The content is surrounded by the padding area, exists between the content and the border.
-
-* **Border** - Every box has a border that exists on the outer edge of the padding area.
-
-* **Margin** - Margin defines the distance between the element and neighboring elements. Margin never has color.
-
-* **Dimensions** - Controls the height and width of the elements.
+- **Dimensions**: Controls the height and width of the elements.
 
 You can also adjust the margins, padding, and border individually on each side of the element. And example element, along with its styling, is below. Add this to your CSS stylesheet and save to see how it changes our basic webpage.
 
