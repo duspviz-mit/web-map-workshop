@@ -89,7 +89,7 @@ Comments look like the following. They are used to write human-readable notes in
 <!-- This is a comment -->
 ```
 
-A basic page, all together, will look like this. Copy and paste this into your `index.html` document and refresh `localhost`. You should see a header, a paragraph, and an unordered list!
+A basic page, all together, will look like this:
 
 ```html
 <!DOCTYPE html>
@@ -115,6 +115,8 @@ A basic page, all together, will look like this. Copy and paste this into your `
 	</body>
 </html>
 ```
+
+Copy and paste this into your `index.html` document and refresh `localhost`. You should see a header, a paragraph, and an unordered list!
 
 ### The DOM: Document Object Model
 
