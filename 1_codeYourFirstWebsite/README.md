@@ -28,6 +28,14 @@ Open your text editor and add your new project folder to your web directory (in 
 
 When a browser requests your page, the server will return the `index.html` file in the accessed directory. Create a new blank text document in your text editor and save it as `index.html` in your web folder.
 
+### Developer Tools
+
+One of the best ways to come to terms with the structure and logic of HTML and CSS markup is to study... well, other people's websites. It turns out that you can examine the HTML and CSS code that is structuring and styling any page you load in your web browser of choice (no matter which web browser this is... though why wouldn't it be [Firefox?](https://www.mozilla.org/en-US/firefox/) Or [Brave](https://brave.com/), for the brave and cyber-secure.)
+
+![Developer tools.](images/developer_tools.png)
+
+In Firefox, Chrome, or Brave you can toggle Developer Tools using either the hotkey, (`Cmd + Opt + I` on Mac, `Ctrl + Shift + I` on Windows or Linux). Navigate to a page whose design you appreciate and open developer tools - mouse over the HTML code and see the elements of the page light up! This is a really good way to get a sense of the common methods for structuring web pages. You can also see the CSS that's styling the page... and modify it! This is often much faster than modifying the CSS in your file if you're trying to quickly prototype changes to your page design.
+
 ### Start up a Web Server
 
 To work with our website, we need our computer to act like a web server, allowing it to access files online. There are many tools for doing this; a very simple one is accessible from your terminal.
@@ -72,13 +80,13 @@ Elements of the page are organized by tags. HTML tags are keywords surrounded by
 Some tags don't include 'content' in this sense (for example, `<img />`). These are called **void elements** and use a slightly different syntax.
 
 ```html
-<tag />
+<img />
 ```
 
 Comments look like the following. They are used to write human-readable notes in your code, but are ignored by the browser. Comments are great for sharing and revisiting code---it lets other coders (and yourself six months from now) see what you were thinking.
 
 ```html
-<!-- ... -->
+<!-- This is a comment -->
 ```
 
 A basic page, all together, will look like this. Copy and paste this into your `index.html` document and refresh `localhost`. You should see a header, a paragraph, and an unordered list!
@@ -212,54 +220,31 @@ Adding a link to your site is simple. To add a link, we use the `<a>` tag. The a
 
 You have many options for links. [Read about them here](http://www.w3schools.com/tags/tag_a.asp). For example, if you want a link to open in a new page, you can use `target="_blank"` as a property of the `<a>` tag - this is very common, though becoming less so as more and more users access web pages through their browsers.
 
-*Can you add a link that takes you to Google Maps?*
+- Add a text link to [OpenStreetMap](https://www.openstreetmap.org/)! This can be a `<p>`, a `<h3>`... or any other text!
 
 ### Add an Image
 
-Adding an image is just as easy as adding a hyperlink, although a bit different. An image is not stored on your webpage, but it sits on your server, just like your other files. When you display an image in an html file, you are linking to the image. The HTML tells the browser to locate and display it. Therefore, we will follow a multiple step process.
+Adding an image is just as easy as adding a hyperlink, although a bit different. An image is not stored on your webpage exactly... instead, it sits on your server and is referenced by HTML code that tells the browser to locate and display it.
 
-- Locate the folder named `images` in your project directory. You will find one image here named `cat.jpg`. Here you store all subsequent images you want to use in your page.
-- Use the `<img />` tag to link to that image in `index.html`.
+- First, find an image you'd like to include in your page. Download this image to your `images` directory. We'll now be able to reference this file by its _path_ and _filename_.
 
-Now we can add the image to our index.html. The following line of code uses the `<img>` tag, and then links to our image. We will use the `src` attribute to name the source of the image. The image is coming from our own server, we don't need to go anywhere to find it, so we can put the name of the folder and image as our image address (i.e., `"images/cat.jpg"`)
+Now we can add the image to our index.html. The following line of code uses the `<img>` tag, and then links to our image. 
 
-Can you add another image, perhaps a photo of the Boston skyline?
-
-If you want to add an image from another page, you can simply include the URL at which the image is located. The following links to an image on Wikimedia.
-
-```xml
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/North_End%2C_Boston.jpg"/>
+```html
+<img src="images/cat.jpg" alt="Grumpy cat."/>
 ```
 
-#### Our Code
+We will use the `src` attribute to name the source of the image. The image is coming from our own server, we don't need to go anywhere to find it, so we can put the name of the folder and image as our image address (i.e., `images/cat.jpg`)
 
-At present, your document will look something like the following.
+You might ask: what's this `alt` business? Great question! First of all, it will be displayed when the image can't be located. But maybe more importantly, it's an accessibility consideration: blind people use web reading tools to navigate the internet, and including this alt text is a way for those with impaired sight to read your visual content.
 
-```xml
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-    	<meta charset="utf-8">
-    	<title>Hello World</title>
-	</head>
-	<body>
-		<!-- This is a comment -->
-		<h1>Hello World</h1>
-		<div id="main">
-			<p id="foo">This is my first paragraph.</p>
-			<p id="bar">This is my second paragraph. <a href="http://dusp.mit.edu">Take me to DUSP.</a></p>
-			<img src="images/cat.jpg"/>
-		</div>
-	</body>
-</html>
+- Add the image you downloaded to your page!
+
+Note that if you want to include an image from another page, you can simply include its web address in the `src` attribute.
+
+```html
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Fitchburg_Line_train_passing_Union_Square_station_site%2C_July_2015.JPG/1920px-Fitchburg_Line_train_passing_Union_Square_station_site%2C_July_2015.JPG" alt="Train approaching near site of new Union Square Green Line Stop in Somerville, MA."/>
 ```
-
-Our page, with this code, contains a bit more content now.
-
-<img src="images/simple_page.png" alt="page" />
-
-*What does our DOM Tree look like at this point?*
-
 ___
 
 ## CSS: Cascading Style Sheets
@@ -338,7 +323,7 @@ CSS follows the DOM model, with styles applied to elements higher in the DOM app
 
 There are two general rules of thumb.
 
-* CSS defined last in your document will supersede CSS set on a selector earlier in your document. E.g.,...
+1. CSS selectors later in your document will override CSS selectors earlier in your document. E.g.,...
 
 ```css
 p {
@@ -353,14 +338,14 @@ p {
 
 ```
 
-* The more specific selector will override the less specific selector. For example, a style set on the body selector will be overridden by a style set on an element within the body... or a style set on a specific class of a paragraph element will override the generic paragraph style. E.g., ...
+2. The __more specific selector will override the less specific selector__. For example, a style set on the body selector will be overridden by a style set on an element within the body... or a style set on a specific class of a paragraph element will override the generic paragraph style. E.g., ...
 
 ```css
 p {
 	font-size: 12;
 }
 
-/* will be supercede by... */
+/* will be superceded by... */
 
 p .footnote {
 	font-size: 9;
@@ -444,26 +429,13 @@ p {
 }
 ```
 
-#### Positioning
-
-Positioning your element
-
-* **Relative** - Position according to normal document flow, then shift using positioning properties such as *top* or *left*.
-
-* **Absolute** - Take out of normal flow, and manually position against the containing element.
-
-* **Fixed** - Take out of normal flow and manually position against the browser window.
-
-Another available property is called is **float**. Float can be used to wrap text around images.
 
 CSS is the way you style your page, learn more by referring to the references, or playing around in a sandbox such as [CSS Desk](http://www.cssdesk.com/).
 
 ---
 
-## What to do next?
+## What next?
 
 Add more images, more text, and different elements to your `index.html`! Consider exploring HTML and CSS resources on offer from Lynda.com, Codecademy, and w3schools. See if you can understand and expand the [basic website template](http://duspviz.mit.edu/resources/gis-portfolio.zip) we provide students in the first week of 11.205 - try adding content and changing styles! Play with hosting your website on your Athena locker. If you're feeling bold, dip your toes into Javascript.
 
 Come back next week for a primer on using Bootstrap and templates to make developing stylish---oh-so-stylish---and function---oh-so-functional---websites painless.
-
-![Kevin Spacey is only getting started.](https://media.giphy.com/media/26tPdesgkQlXiiERq/giphy.gif)
