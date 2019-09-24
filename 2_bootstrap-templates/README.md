@@ -365,6 +365,8 @@ Refresh your page! You should see that your links are now a different color, tho
 }
 ```
 
+![Changed link and button color.](images/link_color.png)
+
 Save and refresh your page. You should now see the button color changed to match your link color.
 
 ### What Now?
