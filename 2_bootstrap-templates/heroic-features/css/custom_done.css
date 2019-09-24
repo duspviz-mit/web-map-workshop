@@ -1,0 +1,22 @@
+#featured {
+    background-image: url("../images/boston.jpg");
+    background-size: cover;
+    color: white;
+}
+
+a {
+	color: #34576d;
+}
+
+a:hover {
+	color: #333333;
+}
+
+.btn-primary {
+    background-color: #34576d;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #333333;
+}
