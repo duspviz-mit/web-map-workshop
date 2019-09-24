@@ -1,3 +1,0 @@
-# Using Bootstrap Templates and Components
-
-Coming soon to a DUSPViz near you...
