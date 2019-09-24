@@ -1,8 +1,8 @@
 # Web Design 2: Website Frameworks and Templates
 
-Prerequisite: Websites Part 1 - Introduction to Web Pages, HTML, and CSS
+![Changed link and button color.](images/link_color.png)
 
-Download workshop materials here.
+[Download workshop materials here.](http://duspviz.mit.edu/resources/heroic-features.zip)
 
 The goal of this workshop is to get you hacking at existing templates built using [a framework called Bootstrap](https://getbootstrap.com/). This will involve customizing a pre-existing template by replacing placeholder content with our own material and developing custom CSS. At the end of the lab, you will have the skeleton of an easily expandable, mobile-friendly portfolio page.
 
@@ -371,4 +371,8 @@ Save and refresh your page. You should now see the button color changed to match
 
 ### What Now?
 
-We've covered a lot today! Your challenge, should you choose to accept it, is to modify the additional Bootstrap cards using your own content. Experiment with your css; try modifying the font of the entire document, and/or of specific elements.
+We've covered a lot today! For an additional challenge, you can go ahead and...
+
++ Modify the additional Bootstrap cards using your own content. 
++ Experiment with your css; try modifying the font of the entire document, and/or of specific elements.
++ Develop a new page, maybe using the [Blog Post](https://startbootstrap.com/templates/blog-post/) template and link it to your front page.
