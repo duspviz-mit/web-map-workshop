@@ -61,11 +61,11 @@
 		map.on('click', onMapClick);
 
 		// load GeoJSON from an external file
-		$.getJSON("coffee_cafes.geojson",function(data){
+		$.getJSON("obstructed_bike_lanes.geojson",function(data){
 		    // add GeoJSON layer to the map once the file is loaded
 		    L.geoJson(data,{
 		        onEachFeature: function (feature, layer) {
-		            layer.bindPopup(feature.properties.name);
+		            layer.bindPopup(feature.properties.address);
 		        }
 		    }).addTo(map);
 		});
