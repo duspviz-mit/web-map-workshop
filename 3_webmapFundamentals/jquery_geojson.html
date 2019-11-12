@@ -23,11 +23,6 @@
 		// Create variable to hold map element, give initial settings to map
 		const map = new L.map('map').setView([42.362432, -71.086086], 14);
 		
-		// Add OpenStreetMap tile layer to map element
-		// L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { 
-		// 	attribution: '© OpenStreetMap' 
-		// }).addTo(map);
-
 		let Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
 			attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 			subdomains: 'abcd',
@@ -35,30 +30,6 @@
 			maxZoom: 20,
 			ext: 'png'
 		}).addTo(map);
-
-		// Create point feature for Kendall Square T Station
-		let myDataMarker = L.marker([42.362432, -71.086086]).addTo(map);
-		
-		// Create point feature for Kendall Square T Station
-		let myDataCircle = L.circleMarker([42.362432, -71.086086]).addTo(map);
-		
-		// Create line feature for Mass Ave Bridge, style and add to map
-		let myDataLine = L.polyline([[42.357227, -71.092631], [42.351411, -71.089723]],
-		    {color: 'red', weight: 10}).addTo(map);
-		
-		// Create area feature for MIT, style and add to map
-		let myArea = L.polygon([[42.353770, -71.103606], [42.355447, -71.104475],
-		    [42.362681, -71.089830], [42.361829, -71.079230]], 
-		    {color: 'blue', weight: 4}).addTo(map);
-		
-		// Bind popup to data point object
-		myDataMarker.bindPopup("<h3>Kendall Square</h3><p>Cambridge, MA<br>Information about Kendall Square.</p>");
-		
-		// Bind popup to line object
-		myDataLine.bindPopup("Mass Ave Bridge");
-		
-		// Bind popup to area object
-		myArea.bindPopup("MIT Campus");
 
 		// load GeoJSON from an external file
 		$.getJSON("obs_bike_lanes.geojson",function(data){
@@ -68,7 +39,7 @@
 					return L.circleMarker(latlng);
 				},
 		        onEachFeature: function (feature, layer) {
-		            layer.bindPopup(feature.properties.address);
+		            layer.bindPopup(feature.properties.created + "<br>" + feature.properties.address + "");
 		        }
 		    }).addTo(map);
 		});
