@@ -6,28 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Leaflet Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/></head>
+   		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   		crossorigin=""/></head>
 <body>
     <!-- Our web map and content will go here -->
-    <div id="map" style="width: 705px; height: 375px"></div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <div id="map" style="width: 100%; height: 600px"></div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
     <!-- Make sure you put this AFTER Leaflet's CSS -->
  	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
- 	integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
- 	crossorigin=""></script>
+ 		integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+ 		crossorigin=""></script>
 
     <script>
 		// Create variable to hold map element, give initial settings to map
 		const map = new L.map('map').setView([42.362432, -71.086086], 14);
 		
 		// Add OpenStreetMap tile layer to map element
-		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { 
-			attribution: '© OpenStreetMap' 
+		// L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { 
+		// 	attribution: '© OpenStreetMap' 
+		// }).addTo(map);
+
+		let Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
+			attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			subdomains: 'abcd',
+			minZoom: 0,
+			maxZoom: 20,
+			ext: 'png'
 		}).addTo(map);
+
+		// Create point feature for Kendall Square T Station
+		let myDataMarker = L.marker([42.362432, -71.086086]).addTo(map);
 		
 		// Create point feature for Kendall Square T Station
-		let myDataPoint = L.marker([42.362432, -71.086086]).addTo(map);
+		let myDataCircle = L.circleMarker([42.362432, -71.086086]).addTo(map);
 		
 		// Create line feature for Mass Ave Bridge, style and add to map
 		let myDataLine = L.polyline([[42.357227, -71.092631], [42.351411, -71.089723]],
@@ -39,31 +52,21 @@
 		    {color: 'blue', weight: 4}).addTo(map);
 		
 		// Bind popup to data point object
-		myDataPoint.bindPopup("<h3>Kendall Square</h3><p>Cambridge, MA<br>Information about Kendall Square.</p>");
+		myDataMarker.bindPopup("<h3>Kendall Square</h3><p>Cambridge, MA<br>Information about Kendall Square.</p>");
 		
 		// Bind popup to line object
 		myDataLine.bindPopup("Mass Ave Bridge");
 		
 		// Bind popup to area object
 		myArea.bindPopup("MIT Campus");
-		
-		// Create an Empty Popup
-		let popup = L.popup();
-
-		// Write function to set Properties of the Popup
-		function onMapClick(e) {
-		    popup.setLatLng(e.latlng)
-		        .setContent("You clicked the map at " + e.latlng.toString())
-		        .openOn(map);
-		}
-
-		// Listen for a click event on the Map element
-		map.on('click', onMapClick);
 
 		// load GeoJSON from an external file
-		$.getJSON("obstructed_bike_lanes.geojson",function(data){
+		$.getJSON("obs_bike_lanes.geojson",function(data){
 		    // add GeoJSON layer to the map once the file is loaded
 		    L.geoJson(data,{
+				pointToLayer: function(geoJsonPoint, latlng) {
+					return L.circleMarker(latlng);
+				},
 		        onEachFeature: function (feature, layer) {
 		            layer.bindPopup(feature.properties.address);
 		        }
