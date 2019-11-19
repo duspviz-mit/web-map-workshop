@@ -42,7 +42,7 @@
 		$.getJSON("obs_bike_lanes.geojson", function(data){
 			// add GeoJSON layer to the map once the file is loaded
 			let closedBlockedLanes = L.geoJson(data,{
-				attribution: 'Commonwealh Connect provided by <a href="https://data.cambridgema.gov/Public-Works/Commonwealth-Connect-Service-Requests/2z9k-mv9g">Cambridge Open Data</a>',
+				attribution: 'Obstructed lane data provided by <a href="https://data.cambridgema.gov/Public-Works/Commonwealth-Connect-Service-Requests/2z9k-mv9g">Cambridge Open Data</a>',
 				pointToLayer: function(geoJsonPoint, latlng) {
 					return L.circleMarker(latlng, {
 						color: 'gray',
@@ -59,7 +59,7 @@
 		    });
 
 			let openBlockedLanes = L.geoJson(data,{
-				attribution: 'Commonwealh Connect provided by <a href="https://data.cambridgema.gov/Public-Works/Commonwealth-Connect-Service-Requests/2z9k-mv9g">Cambridge Open Data</a>',
+				attribution: 'Obstructed lane data provided by <a href="https://data.cambridgema.gov/Public-Works/Commonwealth-Connect-Service-Requests/2z9k-mv9g">Cambridge Open Data</a>',
 				pointToLayer: function(geoJsonPoint, latlng) {
 					return L.circleMarker(latlng, {
 						color: 'red',

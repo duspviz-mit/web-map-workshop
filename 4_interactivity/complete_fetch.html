@@ -19,7 +19,9 @@
     	// Create web map object
     	const map = L.map('map',{
     		center: [42.375467, -71.112863],
-    		zoom: 14 
+    		zoom: 14,
+			minZoom: 13,
+			maxZoom: 18
 		});
 
     	// Add tile layer for Open Street Map to map object
@@ -40,7 +42,7 @@
 		.then(function(data){
 			// add GeoJSON layer to the map once the file is loaded
 			let closedBlockedLanes = L.geoJson(data,{
-				attribution: 'Commonwealh Connect provided by <a href="https://data.cambridgema.gov/Public-Works/Commonwealth-Connect-Service-Requests/2z9k-mv9g">Cambridge Open Data</a>',
+				attribution: 'Obstructed lane data provided by <a href="https://data.cambridgema.gov/Public-Works/Commonwealth-Connect-Service-Requests/2z9k-mv9g">Cambridge Open Data</a>',
 				pointToLayer: function(geoJsonPoint, latlng) {
 					return L.circleMarker(latlng, {
 						color: 'gray',
@@ -57,7 +59,7 @@
 		    });
 
 			let openBlockedLanes = L.geoJson(data,{
-				attribution: 'Commonwealh Connect provided by <a href="https://data.cambridgema.gov/Public-Works/Commonwealth-Connect-Service-Requests/2z9k-mv9g">Cambridge Open Data</a>',
+				attribution: 'Obstructed lane data provided by <a href="https://data.cambridgema.gov/Public-Works/Commonwealth-Connect-Service-Requests/2z9k-mv9g">Cambridge Open Data</a>',
 				pointToLayer: function(geoJsonPoint, latlng) {
 					return L.circleMarker(latlng, {
 						color: 'red',
