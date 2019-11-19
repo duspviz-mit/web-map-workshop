@@ -16,23 +16,12 @@
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
 		integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
 		crossorigin=""></script>
-	<script>
-    	// Create web map object
-    	const map = L.map('map',{
-    		center: [42.362432, -71.086086],
-    		zoom: 14 
-		});
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+	<script src="js/obsMap.js"></script>
 
-    	// Add tile layer for Open Street Map to map object
-		let Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
-			attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-			subdomains: 'abcd',
-			minZoom: 0,
-			maxZoom: 20,
-			ext: 'png'
-		}).addTo(map);
-		
-		Stamen_TonerLite.addTo(map);
-	</script>
+	<!-- <script src="js/completeFetch.js"></script> -->
+	<!-- <script src="js/completeJquery.js"></script> -->
 </body>
 </html>
