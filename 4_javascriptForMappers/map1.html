@@ -1,32 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Leaflet Map</title>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
+   		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   		crossorigin=""/>
 </head>
 <body>
 	<!-- Our web map and content will go here -->
-	<div id="map" style="height: 600px"></div>
+	<div id="map" style="height: 600px"></div> 
 	</div>
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-	integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-	crossorigin=""></script>
+		integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+		crossorigin=""></script>
 	<script>
     	// Create web map object
     	const map = L.map('map',{
     		center: [42.362432, -71.086086],
-    		zoom: 14 }
-    	);
+    		zoom: 14 
+		});
 
     	// Add tile layer for Open Street Map to map object
-    	let osmTiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { 
-			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' 
-		});
+		let Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
+			attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			subdomains: 'abcd',
+			minZoom: 0,
+			maxZoom: 20,
+			ext: 'png'
+		}).addTo(map);
 		
-		osmTiles.addTo(map);
-
+		Stamen_TonerLite.addTo(map);
 	</script>
 </body>
 </html>
