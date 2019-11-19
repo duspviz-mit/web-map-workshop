@@ -2,26 +2,30 @@
 <html>
 <head>
 	<title>Leaflet Map</title>
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
 </head>
 <body>
 	<!-- Our web map and content will go here -->
-	<div id="map" style="width: 705px; height: 375px"></div>
-	<div id="controls" style="margin: 15px;">
-		Our Buttons Will Go Here
+	<div id="map" style="height: 600px"></div>
 	</div>
-	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+	integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+	crossorigin=""></script>
 	<script>
     	// Create web map object
-    	var map = L.map('map',{
+    	const map = L.map('map',{
     		center: [42.362432, -71.086086],
     		zoom: 14 }
     	);
 
     	// Add tile layer for Open Street Map to map object
-    	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
-
-
+    	let osmTiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { 
+			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' 
+		});
+		
+		osmTiles.addTo(map);
 
 	</script>
 </body>
