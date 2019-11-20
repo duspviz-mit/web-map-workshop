@@ -1,5 +1,5 @@
 // Create web map object
-const map = L.map('map',{
+const map = new L.map('map',{
     center: [42.375467, -71.112863],
     zoom: 14,
     minZoom: 13,
